@@ -1,4 +1,4 @@
-package com.yagocurvello.ifood.helper;
+package com.yagocurvello.ifood.listener;
 
 import android.content.Context;
 import android.view.GestureDetector;
