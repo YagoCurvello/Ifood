@@ -86,9 +86,9 @@ public class UsuarioFirebase {
     }
 
     public static boolean salvarUsuario(Usuario usuario){
-        if (usuario.getIdUsuario() != null){
+        if (usuario.getId() != null){
             DatabaseReference reference = ConfigFirebase.getFirebaseDatabase();
-            reference.child("usuarios").child(usuario.getIdUsuario()).setValue(usuario);
+            reference.child("usuarios").child(usuario.getId()).setValue(usuario);
             return true;
         }else {
             return false;
@@ -104,7 +104,6 @@ public class UsuarioFirebase {
         HashMap<String, Object> usuarioMap = new HashMap<>();
         usuarioMap.put("email", usuario.getEmail());
         usuarioMap.put("name", usuario.getName());
-        usuarioMap.put("foto", usuario.getFoto());
 
         usuarioDatabaseRef.updateChildren(usuarioMap);
 
@@ -116,12 +115,6 @@ public class UsuarioFirebase {
 
         usuario.setEmail(firebaseUser.getEmail());
         usuario.setName(firebaseUser.getDisplayName());
-
-        if (firebaseUser.getPhotoUrl() == null){
-            usuario.setFoto("");
-        }else {
-            usuario.setFoto(firebaseUser.getPhotoUrl().toString());
-        }
 
         return usuario;
     }

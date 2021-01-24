@@ -1,6 +1,8 @@
 package com.yagocurvello.ifood.model;
 
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Exclude;
+import com.yagocurvello.ifood.config.ConfigFirebase;
 
 import java.io.Serializable;
 
@@ -10,11 +12,11 @@ public class Usuario implements Serializable {
     private String name;
     private String email;
     private String senha;
-    private String IdUsuario;
-    private String foto;
+    private String id;
+    private String tipo;
+    private String endereco;
 
     public Usuario() {
-
     }
 
     public String getName() {
@@ -43,21 +45,35 @@ public class Usuario implements Serializable {
     }
 
     @Exclude
-    public String getIdUsuario() {
-        return IdUsuario;
+    public String getId() {
+        return id;
     }
 
-    public void setIdUsuario(String idUsuario) {
-        IdUsuario = idUsuario;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getFoto() {
-        return foto;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setFoto(String foto) {
-        this.foto = foto;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public void salvar(){
+        DatabaseReference reference = ConfigFirebase.getFirebaseDatabase()
+                .child("usuarios").child(getId());
+        reference.setValue(this);
+
+    }
 }
 
