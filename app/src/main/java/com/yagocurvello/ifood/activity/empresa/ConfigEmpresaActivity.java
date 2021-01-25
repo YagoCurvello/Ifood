@@ -116,19 +116,19 @@ public class ConfigEmpresaActivity extends AppCompatActivity {
                     if (!taxa.isEmpty() && !taxa.equals("")) {
                         return true;
                     } else {
-                        Toast.makeText(ConfigEmpresaActivity.this,"Preencher campo Login",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ConfigEmpresaActivity.this,"Preencher campo Taxa",Toast.LENGTH_SHORT).show();
                         return false;
                     }
                 } else {
-                    Toast.makeText(ConfigEmpresaActivity.this,"Preencher campo Login",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ConfigEmpresaActivity.this,"Preencher campo Tempo",Toast.LENGTH_SHORT).show();
                     return false;
                 }
             } else {
-                Toast.makeText(ConfigEmpresaActivity.this,"Preencher campo Login",Toast.LENGTH_SHORT).show();
+                Toast.makeText(ConfigEmpresaActivity.this,"Preencher campo Culinaria",Toast.LENGTH_SHORT).show();
                 return false;
             }
         } else {
-            Toast.makeText(ConfigEmpresaActivity.this,"Preencher campo Login",Toast.LENGTH_SHORT).show();
+            Toast.makeText(ConfigEmpresaActivity.this,"Preencher campo Nome",Toast.LENGTH_SHORT).show();
             return false;
         }
     }

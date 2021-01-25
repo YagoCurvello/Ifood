@@ -18,7 +18,7 @@ import com.yagocurvello.ifood.config.ConfigFirebase;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private RecyclerView recyclerUser;
+    private RecyclerView recyclerEmpresa;
     private MaterialSearchView searchView;
 
     private FirebaseAuth auth;
@@ -52,7 +52,7 @@ public class HomeActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         searchView = (MaterialSearchView) findViewById(R.id.search_view);
-        recyclerUser = findViewById(R.id.recyclerUser);
+        recyclerEmpresa = findViewById(R.id.recyclerEmpresa);
 
         auth = ConfigFirebase.getFirebaseAutenticacao();
     }
