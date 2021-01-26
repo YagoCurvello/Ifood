@@ -83,6 +83,7 @@ public class ConfigEmpresaActivity extends AppCompatActivity {
                 taxa = campoTaxa.getText().toString();
                 if (verificaTexto()){
                     salvarEmpresa();
+                    finish();
                 }
             }
         });
@@ -149,6 +150,8 @@ public class ConfigEmpresaActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode,int resultCode,@Nullable Intent data) {
         super.onActivityResult(requestCode,resultCode,data);
+
+        empresa = new Empresa();
 
         if (resultCode == RESULT_OK){
             Bitmap imagem = null;

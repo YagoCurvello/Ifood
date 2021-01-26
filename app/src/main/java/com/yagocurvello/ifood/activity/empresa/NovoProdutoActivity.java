@@ -33,7 +33,8 @@ public class NovoProdutoActivity extends AppCompatActivity {
 
     private Produto produto;
     private List<Produto> produtoList;
-    private String nome, descricao, preco;
+    private String nome, descricao;
+    private Double preco;
 
     private FirebaseAuth auth;
     private DatabaseReference reference;
@@ -51,12 +52,12 @@ public class NovoProdutoActivity extends AppCompatActivity {
             public void onClick(View view) {
                 nome = editNome.getText().toString();
                 descricao = editDescricao.getText().toString();
-                preco = editPreco.getText().toString();
+                preco = Double.parseDouble(editPreco.getText().toString());
 
                 if (verificaTexto()){
-                    produto.setNome(editNome.getText().toString());
-                    produto.setDescricao(editDescricao.getText().toString());
-                    produto.setValor(editPreco.getText().toString());
+                    produto.setNome(nome);
+                    produto.setDescricao(descricao);
+                    produto.setValor(preco);
 
                     salvarProduto();
                 }
@@ -85,7 +86,7 @@ public class NovoProdutoActivity extends AppCompatActivity {
     private boolean verificaTexto() {
         if (!nome.isEmpty() && !nome.equals("")) {
             if (!descricao.isEmpty() && !descricao.equals("")) {
-                if (!preco.isEmpty() && !preco.equals("")) {
+                if (!preco.toString().isEmpty() && !preco.equals("")) {
                     return true;
                 } else {
                     Toast.makeText(NovoProdutoActivity.this,"Preencher campo Preço",Toast.LENGTH_SHORT).show();

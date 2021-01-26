@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Empresa {
 
-    private String culinaria, tempo, taxa, id, caminhoFoto, nome;
+    private String culinaria, tempo, id, caminhoFoto, nome, taxa;;
     private List <Produto> produtoList;
 
     public Empresa() {

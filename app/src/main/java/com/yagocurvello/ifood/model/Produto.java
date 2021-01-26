@@ -2,7 +2,8 @@ package com.yagocurvello.ifood.model;
 
 public class Produto {
 
-    private String nome, descricao, valor;
+    private String nome, descricao;
+    private Double valor;
 
     public Produto() {
     }
@@ -23,11 +24,11 @@ public class Produto {
         this.descricao = descricao;
     }
 
-    public String getValor() {
+    public Double getValor() {
         return valor;
     }
 
-    public void setValor(String valor) {
+    public void setValor(Double valor) {
         this.valor = valor;
     }
 }

@@ -19,6 +19,7 @@
         android:id="@+id/recyclerEmpresa"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:background="@color/white"
         android:padding="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

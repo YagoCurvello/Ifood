@@ -13,8 +13,8 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/circleFotoEmpresaHome"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"
             android:scaleType="centerCrop"
@@ -38,16 +38,30 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/textTempo"
+                android:id="@+id/textCulinaria"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="20 - 30 min" />
+                android:text="Japonesa" />
 
-            <TextView
-                android:id="@+id/textTaxa"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="R$ 3,99" />
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textTempo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="20 - 30 min" />
+
+                <TextView
+                    android:id="@+id/textTaxa"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:text="R$ 3,99" />
+            </LinearLayout>
+
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

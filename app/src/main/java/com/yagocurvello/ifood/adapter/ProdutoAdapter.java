@@ -38,7 +38,7 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.MyViewHo
 
         holder.nome.setText(produto.getNome());
         holder.descricao.setText(produto.getDescricao());
-        holder.valor.setText(produto.getValor());
+        holder.valor.setText("R$ " + produto.getValor());
     }
 
     @Override
