@@ -144,7 +144,7 @@ public class ConfigEmpresaActivity extends AppCompatActivity {
             empresa.setCaminhoFoto("");
         }
 
-        empresa.salvar();
+        empresa.atualizar();
     }
 
     @Override

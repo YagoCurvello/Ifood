@@ -4,6 +4,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Exclude;
 import com.yagocurvello.ifood.config.ConfigFirebase;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class Empresa {
@@ -73,5 +74,18 @@ public class Empresa {
     public void salvar(){
         DatabaseReference reference = ConfigFirebase.getFirebaseDatabase().child("empresas").child(getId());
         reference.setValue(this);
+    }
+
+    public void atualizar(){
+        DatabaseReference reference = ConfigFirebase.getFirebaseDatabase().child("empresas").child(getId());
+
+        HashMap map = new HashMap();
+        map.put("nome", getNome());
+        map.put("culinaria", getCulinaria());
+        map.put("tempo", getTempo());
+        map.put("taxa", getTaxa());
+        map.put("caminhoFoto", getCaminhoFoto());
+
+        reference.updateChildren(map);
     }
 }

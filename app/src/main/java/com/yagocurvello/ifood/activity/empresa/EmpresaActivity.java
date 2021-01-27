@@ -187,8 +187,8 @@ public class EmpresaActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 empresa = snapshot.getValue(Empresa.class);
                 empresa.getProdutoList().remove(position);
-                produtoList.remove(position);
                 referenceEmpresa.setValue(empresa);
+                produtoList.remove(position);
                 adapter.notifyDataSetChanged();
             }
 

@@ -5,6 +5,7 @@ import com.google.firebase.database.Exclude;
 import com.yagocurvello.ifood.config.ConfigFirebase;
 
 import java.io.Serializable;
+import java.util.HashMap;
 
 
 public class Usuario implements Serializable {
@@ -73,7 +74,17 @@ public class Usuario implements Serializable {
         DatabaseReference reference = ConfigFirebase.getFirebaseDatabase()
                 .child("usuarios").child(getId());
         reference.setValue(this);
+    }
 
+    public void atualizar(){
+        DatabaseReference reference = ConfigFirebase.getFirebaseDatabase()
+                .child("usuarios").child(getId());
+
+        HashMap map = new HashMap();
+        map.put("name", getName());
+        map.put("endereco", getEndereco());
+
+        reference.updateChildren(map);
     }
 }
 
