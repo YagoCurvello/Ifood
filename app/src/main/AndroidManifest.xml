@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.yagocurvello.ifood">
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -12,8 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Ifood">
-        <activity android:name=".activity.cliente.ConfigUsuarioActivity"
+        <activity android:name=".activity.cliente.CardapioActivity"
             android:parentActivityName=".activity.cliente.HomeActivity"/>
+        <activity
+            android:name=".activity.cliente.ConfigUsuarioActivity"
+            android:parentActivityName=".activity.cliente.HomeActivity" />
         <activity
             android:name=".activity.empresa.NovoProdutoActivity"
             android:parentActivityName=".activity.empresa.EmpresaActivity" />

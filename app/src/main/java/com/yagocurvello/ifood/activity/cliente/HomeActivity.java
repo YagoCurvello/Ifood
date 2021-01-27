@@ -12,12 +12,15 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 import com.yagocurvello.ifood.R;
@@ -25,6 +28,7 @@ import com.yagocurvello.ifood.activity.AuthActivity;
 import com.yagocurvello.ifood.activity.empresa.EmpresaActivity;
 import com.yagocurvello.ifood.adapter.EmpresaAdapter;
 import com.yagocurvello.ifood.config.ConfigFirebase;
+import com.yagocurvello.ifood.listener.RecyclerItemClickListener;
 import com.yagocurvello.ifood.model.Empresa;
 import com.yagocurvello.ifood.model.Produto;
 
@@ -42,7 +46,6 @@ public class HomeActivity extends AppCompatActivity {
     private DatabaseReference reference;
     private List<Empresa> empresaList;
     private ValueEventListener eventListener;
-    private Empresa empresa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,21 +60,39 @@ public class HomeActivity extends AppCompatActivity {
         recyclerEmpresa.setAdapter(adapter);
         recyclerEmpresa.addItemDecoration(new DividerItemDecoration(HomeActivity.this, LinearLayout.VERTICAL));
 
-        /*
         searchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                //Do some magic
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                //Do some magic
-                return false;
+                pesquisarEmpresas(newText);
+                return true;
             }
         });
-         */
+
+        recyclerEmpresa.addOnItemTouchListener(new RecyclerItemClickListener(HomeActivity.this,
+                recyclerEmpresa, new RecyclerItemClickListener.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view,int position) {
+                String idEmpresa = empresaList.get(position).getId();
+                Intent i = new Intent(HomeActivity.this, CardapioActivity.class);
+                i.putExtra("idEmpresa",idEmpresa);
+                startActivity(i);
+            }
+
+            @Override
+            public void onLongItemClick(View view,int position) {
+
+            }
+
+            @Override
+            public void onItemClick(AdapterView<?> adapterView,View view,int i,long l) {
+
+            }
+        }));
     }
 
     private void configIniciais(){
@@ -85,15 +106,33 @@ public class HomeActivity extends AppCompatActivity {
         empresaList = new ArrayList<>();
     }
 
+    private void pesquisarEmpresas(String texto){
+        Query query = reference.orderByChild("nome").startAt(texto).endAt(texto + "\uf8ff");
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                empresaList.clear();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    empresaList.add(dataSnapshot.getValue(Empresa.class));
+                }
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
     private void recuperarEmpresas(){
-        empresaList.clear();
+
         eventListener = reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                empresaList.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
-                    empresa = dataSnapshot.getValue(Empresa.class);
-                    empresaList.add(empresa);
-
+                    empresaList.add(dataSnapshot.getValue(Empresa.class));
                 }
                 adapter.notifyDataSetChanged();
             }

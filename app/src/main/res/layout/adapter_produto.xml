@@ -30,5 +30,6 @@
         android:text="R$ 3,99"
         android:textAlignment="textStart"
         android:textColor="@color/green"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:textStyle="bold" />
 </LinearLayout>

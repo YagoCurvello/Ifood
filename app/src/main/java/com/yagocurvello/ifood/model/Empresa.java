@@ -30,7 +30,6 @@ public class Empresa {
         this.nome = nome;
     }
 
-    @Exclude
     public String getId() {
         return id;
     }
