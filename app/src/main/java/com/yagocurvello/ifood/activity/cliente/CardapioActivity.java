@@ -88,6 +88,7 @@ public class CardapioActivity extends AppCompatActivity {
                     Intent i = new Intent(CardapioActivity.this, CarrinhoActivity.class);
                     i.putExtra("pedido", pedido);
                     i.putExtra("empresa", empresa);
+                    i.putExtra("valor", aPagar);
                     startActivity(i);
 
                 }else {

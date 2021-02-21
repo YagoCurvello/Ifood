@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ifood">
         <activity android:name=".activity.cliente.CarrinhoActivity"
-            android:parentActivityName=".activity.cliente.CardapioActivity"/>
+            android:parentActivityName=".activity.cliente.HomeActivity"/>
         <activity
             android:name=".activity.cliente.CardapioActivity"
             android:parentActivityName=".activity.cliente.HomeActivity" />
