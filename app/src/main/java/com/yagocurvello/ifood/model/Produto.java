@@ -1,6 +1,8 @@
 package com.yagocurvello.ifood.model;
 
-public class Produto {
+import java.io.Serializable;
+
+public class Produto implements Serializable {
 
     private String nome, descricao;
     private Double valor;

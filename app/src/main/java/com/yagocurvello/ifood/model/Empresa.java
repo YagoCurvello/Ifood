@@ -4,10 +4,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Exclude;
 import com.yagocurvello.ifood.config.ConfigFirebase;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 
-public class Empresa {
+public class Empresa implements Serializable {
 
     private String culinaria, tempo, id, caminhoFoto, nome, taxa;;
     private List <Produto> produtoList;
